@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri - Ersya Ramadhani</title>
+    <!-- Font Inter dari Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Tautkan ke file CSS eksternal (style.css yang sama) -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Gaya spesifik untuk Galeri, jika diperlukan */
+        .gallery-grid {
+            display: grid;
+            /* Grid responsif: 2 kolom di mobile, 3 kolom di tablet, 4 di desktop */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            aspect-ratio: 1 / 1; /* Memastikan gambar berbentuk persegi */
+            display: block;
+        }
+
+        .gallery-section {
+            padding-top: 50px; /* Sesuaikan padding agar tidak terlalu dekat dengan header */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Konten Galeri -->
+    <main class="gallery-page">
+        
+        <!-- CUSTOM HEADER Halaman Detail: Hanya menyisakan Tombol Kembali ke Beranda -->
+        <!-- MENGGUNAKAN GAYA MINIMAL DARI style.css -->
+        <div class="page-header-container page-header-minimal bg-dark" role="region" aria-label="Kembali ke Beranda">
+            <!-- Tombol Kembali ke Beranda -->
+            <div class="back-link-wrapper">
+                <a href="index.html" class="btn-back-home">&leftarrow; Kembali ke Beranda</a>
+            </div>
+        </div>
+
+        <!-- KONTEN UTAMA GALERI -->
+        <section class="gallery-section content-section" role="region">
+            <div class="gallery-grid">
+                <!-- Item Galeri 1 -->
+                <div class="gallery-item">
+                    <img src="Dimsum.jpg" alt="Dimsum">
+                </div>
+                <!-- Item Galeri 2 -->
+                <div class="gallery-item">
+                    <img src="Billiard.jpg" alt="Billiard">
+                </div>
+                <!-- Item Galeri 3 -->
+                <div class="gallery-item">
+                    <img src="Mobile Legends.jpg" alt="Mobile Legends">
+                </div>
+                <!-- Item Galeri 4 -->
+                <div class="gallery-item">
+                    <img src="Hiking.jpg" alt="Hiking">
+                </div>
+            </div>
+            
+        </section>
+    </main>
+
+    <!-- Footer (Sama dengan Halaman Utama) -->
+    <footer class="bg-dark" role="contentinfo">
+        <p>&copy; 2025 Ersya Ramadhani.</p>
+    </footer>
+
+</body>
+</html>

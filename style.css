@@ -1,0 +1,676 @@
+/* --- Palet Warna Soft Pink Modern dan Kontras --- */
+:root {
+    /* Soft Pink - Dusty Rose (Primer/Elemen Utama) */
+    --color-primary: #D7A7B7; 
+    
+    /* Blush Pink/Light Pink (Aksen Latar Belakang) */
+    --color-secondary: #E3C1D0; 
+    
+    /* Burgundy/Maroon (Kontras Gelap & Teks Penting) */
+    --color-dark-accent: #6C3D4D; 
+    
+    /* Latar Belakang Bersih */
+    --color-background: #F8F8F8; 
+    
+    /* Teks Dasar */
+    --color-text-dark: #4A4A4A;
+}
+
+/* --- Base & Reset --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* Menggunakan Font Inter */
+    font-family: 'Inter', sans-serif; 
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-text-dark);
+    scroll-behavior: smooth;
+}
+
+/* --- Layout Utilities --- */
+.flex-row {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    /* Memastikan konten di tengah Hero Section jika layarnya besar */
+    justify-content: center; 
+}
+
+.bg-secondary {
+    background-color: var(--color-secondary);
+}
+
+.bg-dark {
+    background-color: var(--color-dark-accent);
+    color: white;
+}
+
+/* --- Structural Elements --- */
+/* Catatan: Header navigasi utama telah dihapus dari experience.html, 
+    namun gaya ini tetap dipertahankan untuk index.html */
+header {
+    background-color: white;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--color-primary);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-dark-accent);
+    text-decoration: none;
+}
+
+nav a {
+    color: var(--color-dark-accent);
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--color-primary);
+}
+
+main {
+    padding: 0;
+}
+
+.content-section {
+    padding: 80px 5%;
+    min-height: 400px;
+}
+
+h2 {
+    font-size: 2rem;
+    color: var(--color-dark-accent);
+    margin-bottom: 40px; /* Tambahkan jarak di bawah H2 */
+    text-align: center;
+}
+
+h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* --- COMPONENTS: HERO SECTION (FULL SCREEN HEIGHT) --- */
+.hero-section {
+    padding: 100px 5%;
+    /* PERUBAHAN UTAMA: SET TINGGI MINIMUM KE 100% DARI VIEWPORT HEIGHT */
+    /* Dikurangi tinggi header (sekitar 58px) untuk mencegah scrollbar ganda */
+    min-height: calc(100vh - 58px); 
+    
+    /* Memastikan konten (hero-text dan image) berada di tengah Hero section */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    /* Implementasi Gradasi Mesh Digital menggunakan Radial Gradients yang lembut */
+    background: 
+        radial-gradient(at 10% 90%, var(--color-secondary) 0%, transparent 50%),
+        radial-gradient(at 80% 20%, var(--color-primary) 0%, transparent 60%),
+        radial-gradient(at 50% 50%, #f4e8ed 0%, transparent 80%),
+        var(--color-background);
+}
+
+.hero-text {
+    flex: 2;
+    max-width: 600px;
+    /* Untuk tampilan di desktop, teks rata kiri */
+    text-align: left; 
+}
+
+.hero-image-placeholder {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 8px solid white;
+    /* Soft shadow menggunakan warna primer */
+    box-shadow: 0 10px 30px var(--color-primary); 
+}
+
+h1 {
+    font-size: 3rem;
+    color: var(--color-dark-accent);
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+h2 { /* Menambahkan gaya untuk h2 di hero section */
+    font-size: 1.8rem;
+    color: var(--color-dark-accent);
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.intro-story {
+    font-size: 1.15rem;
+    color: var(--color-text-dark);
+    margin-bottom: 30px;
+}
+
+/* --- NEW: ABOUT SECTION (Vertical List Layout) --- */
+
+.history-list-wrapper {
+    /* Menggunakan Grid agar elemen bisa memiliki lebar penuh dan rata tengah */
+    display: grid;
+    grid-template-columns: 1fr; /* Setiap card mengambil satu kolom (lebar penuh) */
+    gap: 30px;
+    max-width: 800px; /* Batasi lebar maksimal agar tidak terlalu lebar di layar besar */
+    margin: 0 auto; /* Tengah-kan wrapper */
+}
+
+.history-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); 
+    border-left: 5px solid var(--color-primary); /* Garis di kiri untuk aksen */
+    
+    /* Flexbox untuk menata ikon, judul, dan tombol di dalam card */
+    display: flex; 
+    flex-direction: column;
+    align-items: flex-start; /* Rata kiri semua elemen di dalam card */
+    text-align: left;
+}
+
+.history-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(108, 61, 77, 0.2); 
+}
+
+/* Card Icon Styling */
+.history-card .card-icon {
+    color: var(--color-primary);
+    width: 50px;
+    height: 50px;
+    stroke-width: 1.5;
+    margin-bottom: 15px;
+}
+
+
+/* --- Portfolio and Skills --- */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.project-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 25px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-top: 5px solid var(--color-primary); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(108, 61, 77, 0.2); 
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.skill-tag {
+    background-color: var(--color-secondary);
+    color: var(--color-dark-accent);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex; 
+    align-items: center;
+    gap: 6px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.skill-tag svg {
+    color: var(--color-dark-accent); 
+}
+
+/* --- Certification Section Styling --- */
+
+.certification-grid {
+    display: grid;
+    /* Layout responsif: Minimal lebar 280px per kartu */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.certification-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 25px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    /* Aksen garis tebal di bagian bawah menggunakan warna Dark Accent */
+    border-bottom: 5px solid var(--color-dark-accent); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+}
+
+.certification-card:hover {
+    transform: translateY(-5px);
+    /* Shadow yang lebih menonjol menggunakan Primary Color */
+    box-shadow: 0 15px 30px rgba(215, 167, 183, 0.5); 
+}
+
+.cert-content {
+    margin-bottom: 15px;
+}
+
+.cert-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-dark-accent);
+    margin-bottom: 5px;
+    line-height: 1.3;
+}
+
+.cert-issuer {
+    font-size: 1rem;
+    color: var(--color-text-dark);
+    margin-bottom: 10px;
+}
+
+.cert-date {
+    font-size: 0.9rem;
+    color: var(--color-primary);
+    font-style: italic;
+}
+
+.btn-credential {
+    /* Gaya tombol/link untuk tautan verifikasi */
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    background-color: var(--color-primary);
+    color: white;
+    border: 2px solid var(--color-primary);
+    transition: all 0.3s;
+    align-self: flex-start; /* Rata kiri di dalam card */
+}
+
+.btn-credential:hover {
+    background-color: var(--color-dark-accent);
+    border-color: var(--color-dark-accent);
+    transform: scale(1.03);
+}
+
+/* --- End Certification Section Styling --- */
+
+
+/* --- Buttons and Links --- */
+.action-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+    border: 2px solid var(--color-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-dark-accent);
+    border-color: var(--color-dark-accent);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-dark-accent);
+    border: 2px solid var(--color-dark-accent);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-dark-accent);
+    color: white;
+}
+
+/* Style untuk tombol "Baca Lebih Lanjut" di card About */
+.btn-readmore {
+    display: inline-block;
+    padding: 8px 15px;
+    margin-top: 20px;
+    border-radius: 20px; /* Bentuk pil agar beda dari tombol utama */
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.85rem;
+    background-color: var(--color-dark-accent);
+    color: white;
+    border: 2px solid var(--color-dark-accent);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-readmore:hover {
+    background-color: transparent;
+    color: var(--color-dark-accent);
+    transform: scale(1.05);
+}
+
+.link-text {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.link-text:hover {
+    color: var(--color-dark-accent);
+}
+
+/* --- Social Links Styling (Dipindahkan ke Contact Section) --- */
+.contact-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.social-links {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.social-links a {
+    color: var(--color-dark-accent);
+    transition: color 0.3s, transform 0.3s;
+    display: flex; 
+}
+
+.social-links a:hover {
+    color: var(--color-primary);
+    transform: translateY(-3px);
+}
+
+.social-links svg {
+    width: 32px;
+    height: 32px;
+    stroke-width: 1.5;
+}
+
+/* --- Shadows and Footer --- */
+.shadow {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+}
+
+/* --- Responsive Design (Mobile Adaptation) --- */
+@media (max-width: 900px) {
+    /* Untuk tablet/layar kecil, Hero section tetap full height, tapi tumpukan */
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 50px 5%;
+        /* Pastikan Hero Section masih full height di mobile, walaupun kontennya ditumpuk */
+        min-height: calc(100vh - 58px); 
+    }
+
+    .hero-image-placeholder {
+        order: -1;
+        margin-bottom: 30px;
+    }
+
+    .profile-pic {
+        width: 200px;
+        height: 200px;
+    }
+
+    .hero-text {
+        text-align: center;
+    }
+    
+    .action-buttons {
+        justify-content: center;
+    }
+
+    /* Catatan: Header navigasi utama telah dihapus di experience.html, 
+        tapi gaya ini tetap relevan untuk halaman index.html jika ada */
+    header {
+        flex-direction: column;
+        padding: 15px 5%;
+        gap: 10px;
+    }
+    
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px 10px;
+    }
+
+    nav a {
+        margin-left: 0;
+    }
+
+    .content-section {
+        padding: 50px 5%;
+    }
+    
+    /* Responsive Header di halaman Detail */
+    .page-header-container {
+        padding: 20px 5%;
+    }
+    
+    .page-title {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Tampilan HP yang sangat kecil */
+    h1 {
+        font-size: 2.5rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .action-buttons a {
+        width: 100%;
+    }
+}
+
+/* --- Tambahan Styling untuk Halaman Experience (experience.html) --- */
+
+/* ---------------------------------------------------- */
+/* STYLES FOR MINIMAL PAGE HEADER (Hanya Tombol Kembali) */
+/* ---------------------------------------------------- */
+
+.page-header-container {
+    /* Gaya dasar: Warna latar belakang penuh untuk area tombol */
+    background-color: var(--color-dark-accent); /* Warna Burgundy/Maroon */
+    padding: 30px 5%; /* Padding standar */
+}
+
+/* Gaya khusus untuk header yang hanya berisi tombol (page-header-minimal) */
+.page-header-minimal {
+    padding: 20px 5%; /* Padding minimal di atas dan bawah agar tombol tidak terlalu besar */
+}
+
+
+.back-link-wrapper {
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* Reset padding agar tidak ada jarak ekstra di dalam wrapper tombol (hanya digunakan di .page-header-minimal) */
+.page-header-minimal .back-link-wrapper {
+    padding-bottom: 0;
+}
+
+
+.btn-back-home {
+    /* Menggunakan warna primer (soft pink) sebagai background tombol */
+    background-color: var(--color-primary); 
+    color: var(--color-dark-accent); /* Teks gelap */
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn-back-home:hover {
+    background-color: white; /* Hover menjadi putih */
+    color: var(--color-dark-accent);
+}
+
+/* ---------------------------------------------------- */
+/* STYLES FOR EXPERIENCE CONTENT */
+/* ---------------------------------------------------- */
+
+.experience-section {
+    padding: 40px 5%; 
+    background-color: var(--color-background);
+}
+
+.category-heading {
+    font-size: 2.2rem;
+    color: var(--color-dark-accent);
+    margin: 40px 0 30px 0;
+    text-align: left; 
+}
+
+/* Kartu Experience: Menggunakan flex-row yang sudah ada */
+.experience-card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    align-items: flex-start; /* Konten di dalamnya rata atas */
+}
+
+/* Class baru untuk shadow yang lebih lembut */
+.shadow-soft {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.exp-image-container {
+    flex: 1;
+    max-width: 450px; /* Lebar maksimal gambar */
+    min-width: 250px;
+}
+
+.exp-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    /* Tambahkan border aksen agar sesuai dengan tema */
+    border: 3px solid var(--color-primary); 
+}
+
+.exp-details {
+    flex: 2;
+    padding-left: 30px; /* Jarak dari gambar */
+}
+
+.exp-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-dark-accent);
+    margin-bottom: 15px;
+}
+
+.exp-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-text-dark);
+}
+
+.section-divider {
+    border: 0;
+    height: 1px;
+    background-color: var(--color-secondary);
+    margin: 60px 0;
+}
+
+
+/* Responsif untuk Halaman Experience */
+@media (max-width: 900px) {
+    .experience-card {
+        flex-direction: column; /* Tumpuk di mobile */
+        gap: 20px;
+        padding: 20px;
+    }
+    
+    /* Mengubah urutan card yang row-reverse menjadi tumpuk biasa */
+    .experience-card[style*="row-reverse"] {
+        flex-direction: column;
+    }
+
+    .exp-image-container {
+        max-width: 100%;
+        order: -1; /* Gambar di atas untuk semua tampilan tumpukan */
+    }
+
+    .exp-details {
+        padding-left: 0;
+    }
+    
+    .category-heading {
+        font-size: 1.8rem;
+    }
+}
